@@ -1,0 +1,43 @@
+@import "./base/reset";
+@import "./abstracts/variables";
+@import "./structure/layout";
+@import "./structure/buttons";
+
+body {
+    background-image: $gradient;
+    font-family: $primary-font;
+    color: #FFF;
+}
+
+h2 {
+    font-size: 2rem;
+}
+
+a {
+    text-decoration: none;
+    color: #FFF;
+}
+
+.navbar {
+    font-size: 2rem;
+    font-weight: 700;
+}
+
+.quiz {
+
+    .quiz__container {
+        background-color: rgba(0, 0, 0, 0.1);
+    }
+}
+
+.clock {
+
+    p {
+        font-size: 4rem;
+        font-weight: 700;
+    }
+
+    .active {
+        color: red;
+    }
+}

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>JS Game Challenge | Quiz</title>
+    <link rel="stylesheet" type="text/css" href="./scss/main.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,700;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.14.0/css/all.css" integrity="sha384-HzLeBuhoNPvSl5KYnjx0BT+WB0QEEqLprO+NBkkk5gbc67FTaL7XIGa2w1L0Xbgc" crossorigin="anonymous">
+
+
+</head>
+<body>
+    <header class="navbar">
+        <a href="index.html" class="home">
+            <i class="fas fa-home"></i>
+        </a>
+        <div class="score">
+            <span class="user__score">0</span>/<span class="current__score">0</span>
+        </div>
+    </header>
+    <main class="quiz">
+        <section class="quiz__container">
+            <header class="quiz__question">
+                <!-- <i class="fas fa-question-circle question__icon"></i> -->
+                <h2 class="quiz__question-header">What is the longest river in the world?</h2>
+            </header>
+            <div class="quiz__answers">
+                <button class="quiz__answer-btns" id="quiz__answer-a" data-correct="false" >Amazon</button>  
+                <button class="quiz__answer-btns" id="quiz__answer-b" data-correct="false">Mississippi</button>  
+                <button class="quiz__answer-btns" id="quiz__answer-c" data-correct="false">Danube</button>  
+                <button class="quiz__answer-btns" id="quiz__answer-d" data-correct="true">Nile</button>  
+            </div>
+        </section>
+    </main>
+    <footer class="clock">
+        <p class="clock__seconds-remaining">10</p>
+    </footer>
+    <script src="./js/main.js" type="module"></script>
+</body>
+</html>

@@ -1,0 +1,29 @@
+.quiz {
+
+    .quiz__container {
+
+        .quiz__answers {
+
+            .quiz__answer-btns {
+                padding: 30px 30px;
+                background-color: rgba(0, 0, 0, 0.2);
+                border: none;
+                border-radius: 30px;
+                color: #FFF;
+                cursor: pointer;
+                outline: none;
+                font-size: 1.1rem;
+                letter-spacing: 0.2em;
+                font-weight: 700;
+
+                .correct {
+                    background-color: #60A561;
+                }
+            
+                &:hover {
+                    background-color: #2F80ED;
+                }
+            }    
+        }
+    }
+}
