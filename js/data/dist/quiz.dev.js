@@ -28,16 +28,27 @@ function () {
     key: "getHtml",
     value: function getHtml() {
       return "<section class=\"quiz__container\">\n                    <header class=\"quiz__question\">\n                        <img src=\"\">".concat(this.image, "</img>\n                        <audio src=\"\">").concat(this.audio, "</audio>\n                        <h2 class=\"quiz__question-header\">").concat(this.number, ". ").concat(this.question, "</h2>\n                    </header>\n                    <div class=\"quiz__answers\">\n                        <button class=\"quiz__answer-btns\" data-correct=\"").concat(this.answers[0].isCorrect, "\">").concat(this.answers[0].answer, "</button>  \n                        <button class=\"quiz__answer-btns\" data-correct=\"").concat(this.answers[1].isCorrect, "\">").concat(this.answers[1].answer, "</button>  \n                        <button class=\"quiz__answer-btns\" data-correct=\"").concat(this.answers[2].isCorrect, "\">").concat(this.answers[2].answer, "</button>  \n                        <button class=\"quiz__answer-btns\" data-correct=\"").concat(this.answers[3].isCorrect, "\">").concat(this.answers[3].answer, "</button>  \n                    </div>\n                </section>");
-    }
+    } // new Question(
+    //     "1", 
+    //     null, 
+    //     null, 
+    //     "What is the longest river in the world?", 
+    //     [
+    //         {answer: "Amazon", isCorrect: false}, 
+    //         {answer: "Amazon", isCorrect: false}, 
+    //         {answer: "Amazon", isCorrect: false},
+    //         {answer: "Amazon", isCorrect: false} 
+    //     ]);
+    //       
+
   }]);
 
   return Question;
 }();
 
-var Answers = function Answers(id, answers, isCorrect) {
+var Answers = function Answers(answers, isCorrect) {
   _classCallCheck(this, Answers);
 
-  this.number = number;
   this.answers = answers;
   this.isCorrect = isCorrect;
 }; // const questions = [

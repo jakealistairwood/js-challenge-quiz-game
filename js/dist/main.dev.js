@@ -4,6 +4,7 @@ var _data = _interopRequireDefault(require("./data/data.js"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
+// import { Question, Answers } from "./data/quiz";
 // import * from "./data/quiz";
 // import questions from "./data/quiz";
 
@@ -13,8 +14,8 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "d
 var answerA = document.getElementById('quiz__answer-a');
 var answerB = document.getElementById('quiz__answer-b');
 var answerC = document.getElementById('quiz__answer-c');
-var answerD = document.getElementById('quiz__answer-d'); // const answerBtns = document.querySelectorAll('.quiz__answer-btns');
-
+var answerD = document.getElementById('quiz__answer-d');
+var answerBtns = document.querySelectorAll('.quiz__answer-btns');
 var userAnswers = [answerA, answerB, answerC, answerD];
 var userScore = document.querySelector('.user__score');
 var totalScore = document.querySelector('.current__score');
@@ -29,17 +30,16 @@ var getQuizContent = function getQuizContent(questionsObject) {
 /* ====================================================================================
 *                                Generate Random Answer 
 ==================================================================================== */
-
-
-var randomAnswer = function randomAnswer() {
-  userAnswers[Math.round(Math.random() * (userAnswers.length - 1))];
-};
-
-console.log(randomAnswer); // console.log(questions[i].answers[i].isCorrect);
+// const randomAnswer = () => {
+//     userAnswers[Math.round(Math.random() * (userAnswers.length - 1))];
+// }
+// console.log(randomAnswer);
+// console.log(questions[i].answers[i].isCorrect);
 
 /* ====================================================================================
 *                                   Countdown Timer 
 ==================================================================================== */
+
 
 var questionCountdown = setInterval(function () {
   secondsRemaining--;
@@ -54,6 +54,8 @@ var questionCountdown = setInterval(function () {
     document.querySelector('.clock__seconds-remaining').innerHTML = "Time's Up....";
     document.body.style.backgroundImage = "linear-gradient(to right, #fd746c, #fe7b6a, #ff8269, #ff8968, #ff9068)";
     document.querySelector('.clock__seconds-remaining').style.color = "#FFF";
+    disableBtns();
+    currentTotalScore();
   }
 }, 1000);
 /* ====================================================================================
@@ -72,6 +74,17 @@ var currentTotalScore = function currentTotalScore() {
   document.querySelector('.current__score').innerHTML = totalScore;
 };
 /* ====================================================================================
+*                                  Disable Buttons
+==================================================================================== */
+
+
+var disableBtns = function disableBtns() {
+  answerA.disabled = true;
+  answerB.disabled = true;
+  answerC.disabled = true;
+  answerD.disabled = true;
+};
+/* ====================================================================================
 *                               Validate User Answers
 ==================================================================================== */
 // const validateAnswer = (questions) => {
@@ -86,13 +99,14 @@ var validateAnswer = function validateAnswer(selectedAnswer) {
     // toggle a class to indicate if this answer was right or wrong
     currentUserScore();
     selectedAnswer.style.backgroundColor = "#60A561";
-    document.querySelector('.clock__seconds-remaining').innerHTML = "Future quizmaster over here";
+    document.querySelector('.clock__seconds-remaining').innerHTML = "Quizmaster in the making...";
   } else {
     selectedAnswer.style.backgroundColor = "#ff8269";
-    document.querySelector('.clock__seconds-remaining').innerHTML = "Better luck next time";
+    document.querySelector('.clock__seconds-remaining').innerHTML = "Better luck next time...";
   }
 
   currentTotalScore();
+  disableBtns();
 };
 /* ====================================================================================
 *                                  Array Iterator 
@@ -103,7 +117,6 @@ var bindAnswerEventListeners = function bindAnswerEventListeners() {
   for (var index = 0; index < userAnswers.length; index++) {
     userAnswers[index].addEventListener('click', function (event) {
       validateAnswer(event.target);
-      userAnswers.disabled = true;
       clearInterval(questionCountdown);
     });
   }

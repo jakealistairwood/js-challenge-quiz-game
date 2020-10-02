@@ -1,4 +1,5 @@
 import questions from "./data/data.js";
+// import { Question, Answers } from "./data/quiz";
 // import * from "./data/quiz";
 // import questions from "./data/quiz";
 
@@ -10,7 +11,7 @@ const answerA = document.getElementById('quiz__answer-a');
 const answerB = document.getElementById('quiz__answer-b');
 const answerC = document.getElementById('quiz__answer-c');
 const answerD = document.getElementById('quiz__answer-d');
-// const answerBtns = document.querySelectorAll('.quiz__answer-btns');
+const answerBtns = document.querySelectorAll('.quiz__answer-btns');
 const userAnswers = [answerA, answerB, answerC, answerD];
 let userScore = document.querySelector('.user__score');
 let totalScore = document.querySelector('.current__score');
@@ -42,11 +43,11 @@ const getQuizContent = (questionsObject) => {
 *                                Generate Random Answer 
 ==================================================================================== */ 
 
-const randomAnswer = () => {
-    userAnswers[Math.round(Math.random() * (userAnswers.length - 1))];
-}
+// const randomAnswer = () => {
+//     userAnswers[Math.round(Math.random() * (userAnswers.length - 1))];
+// }
 
-console.log(randomAnswer);
+// console.log(randomAnswer);
 // console.log(questions[i].answers[i].isCorrect);
 
 /* ====================================================================================
@@ -66,6 +67,8 @@ const questionCountdown = setInterval(() => {
         document.querySelector('.clock__seconds-remaining').innerHTML = "Time's Up....";
         document.body.style.backgroundImage = "linear-gradient(to right, #fd746c, #fe7b6a, #ff8269, #ff8968, #ff9068)";
         document.querySelector('.clock__seconds-remaining').style.color = "#FFF";
+        disableBtns();
+        currentTotalScore();
     }
 }, 1000);
 
@@ -86,6 +89,17 @@ const currentTotalScore = () => {
 }
 
 /* ====================================================================================
+*                                  Disable Buttons
+==================================================================================== */ 
+
+const disableBtns = () => {
+    answerA.disabled = true;
+    answerB.disabled = true;
+    answerC.disabled = true;
+    answerD.disabled = true;
+}
+
+/* ====================================================================================
 *                               Validate User Answers
 ==================================================================================== */ 
 
@@ -101,13 +115,14 @@ const validateAnswer = (selectedAnswer) => {
         // toggle a class to indicate if this answer was right or wrong
         currentUserScore()
         selectedAnswer.style.backgroundColor = "#60A561";
-        document.querySelector('.clock__seconds-remaining').innerHTML = "Future quizmaster over here";
+        document.querySelector('.clock__seconds-remaining').innerHTML = "Quizmaster in the making...";
     } else {
         selectedAnswer.style.backgroundColor = "#ff8269";
-        document.querySelector('.clock__seconds-remaining').innerHTML = "Better luck next time";
+        document.querySelector('.clock__seconds-remaining').innerHTML = "Better luck next time...";
         
     }
     currentTotalScore()
+    disableBtns();
 }
 
 /* ====================================================================================
@@ -118,7 +133,6 @@ const bindAnswerEventListeners = () => {
     for (let index = 0; index < userAnswers.length; index++) {
         userAnswers[index].addEventListener('click', (event) => {
             validateAnswer(event.target);
-            userAnswers.disabled = true;
             clearInterval(questionCountdown);
         });
     }

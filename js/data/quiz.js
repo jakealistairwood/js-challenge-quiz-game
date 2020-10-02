@@ -22,11 +22,23 @@ class Question {
                     </div>
                 </section>`;
     }
+
+    new Question(
+        "1", 
+        null, 
+        null, 
+        "What is the longest river in the world?",
+        [
+            {answer: "Amazon", isCorrect: false}, 
+            {answer: "Amazon", isCorrect: false}, 
+            {answer: "Amazon", isCorrect: false},
+            {answer: "Amazon", isCorrect: false} 
+        ]);
+    //       
 }
 
 class Answers {
-    constructor(id, answers, isCorrect) {
-        this.number = number;
+    constructor(answers, isCorrect) {
         this.answers = answers;
         this.isCorrect = isCorrect;
     }
