@@ -1,9 +1,5 @@
 "use strict";
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports["default"] = void 0;
 var questions = [{
   number: "1",
   image: null,
@@ -94,6 +90,34 @@ var questions = [{
     answer: "Nile",
     isCorrect: true
   }]
-}];
-var _default = questions;
-exports["default"] = _default;
+}]; // class Question {
+//     constructor(number, image, audio, question, answers) {
+//         this.number = number;
+//         this.image = image;
+//         this.audio = audio;
+//         this.question = question;
+//         this.answers = answers;
+//     }
+//     getHTML() {
+//         return `<section class="quiz__container">
+//                     <header class="quiz__question">
+//                         <img src="">${this.image}</img>
+//                         <audio src="">${this.audio}</audio>
+//                         <h2 class="quiz__question-header">${this.number}. ${this.question}</h2>
+//                     </header>
+//                     <div class="quiz__answers">
+//                         <button class="quiz__answer-btns" data-correct="${this.answers[0].isCorrect}">${this.answers[0].answer}</button>  
+//                         <button class="quiz__answer-btns" data-correct="${this.answers[1].isCorrect}">${this.answers[1].answer}</button>  
+//                         <button class="quiz__answer-btns" data-correct="${this.answers[2].isCorrect}">${this.answers[2].answer}</button>  
+//                         <button class="quiz__answer-btns" data-correct="${this.answers[3].isCorrect}">${this.answers[3].answer}</button>  
+//                     </div>
+//                 </section>`;
+//     }
+// }
+// const questionOneData = new Question("1", null, null, "What is the longest river in the world?",
+// [
+//     {answer: "Amazon", isCorrect: false}, 
+//     {answer: "Mississippi", isCorrect: false}, 
+//     {answer: "Danube", isCorrect: false},
+//     {answer: "Nile", isCorrect: true} 
+// ]);

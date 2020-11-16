@@ -1,8 +1,11 @@
-import questions from "./data/data.js";
-// import { Question, Answers } from "./data/quiz";
+// import questions from "./data/data.js";
+// import { Question, questionOneData, questionTwoData } from "./data/quiz";
+// import Question from "./data/quiz";
 // import * from "./data/quiz";
 // import questions from "./data/quiz";
-
+// import questionOneData from "./data/data";
+// import Question from "./data/data";
+// import { Question, questionOneData } from "./data/data";
 /* ====================================================================================
 *                                    Variables
 ==================================================================================== */ 
@@ -20,35 +23,105 @@ let secondsRemaining = document.querySelector('.clock__seconds-remaining').inner
 /* ====================================================================================
 *                      Create HTML render for each questions 
 ==================================================================================== */ 
-
-const getQuizContent = (questionsObject) => {
-    return `
-    <section class="quiz__container">
-        <header class="quiz__question">
-            <img src="">${questions.image}</img>
-            <audio src="">${questions.audio}</audio>
-            <h2 class="quiz__question-header">${questions.number}. ${questions.question}</h2>
-        </header>
-        <div class="quiz__answers">
-            <button class="quiz__answer-btns">${questions[0].answers[0].answer}</button>  
-            <button class="quiz__answer-btns">${questions[0].answers[1].answer}</button>  
-            <button class="quiz__answer-btns">${questions[0].answers[2].answer}</button>  
-            <button class="quiz__answer-btns">${questions[0].answers[3].answer}</button>  
-        </div>
-    </section>
-    `;
-}
-
+// const getQuizContent = (questionsObject) => {
+//     return `
+//     <section class="quiz__container">
+//         <header class="quiz__question">
+//             <img src="">${questions.image}</img>
+//             <audio src="">${questions.audio}</audio>
+//             <h2 class="quiz__question-header">${questions.number}. ${questions.question}</h2>
+//         </header>
+//         <div class="quiz__answers">
+//             <button class="quiz__answer-btns">${questions[0].answers[0].answer}</button>  
+//             <button class="quiz__answer-btns">${questions[0].answers[1].answer}</button>  
+//             <button class="quiz__answer-btns">${questions[0].answers[2].answer}</button>  
+//             <button class="quiz__answer-btns">${questions[0].answers[3].answer}</button>  
+//         </div>
+//     </section>
+//     `;
+// }
 /* ====================================================================================
-*                                Generate Random Answer 
+*                               Questions Data 
 ==================================================================================== */ 
 
-// const randomAnswer = () => {
-//     userAnswers[Math.round(Math.random() * (userAnswers.length - 1))];
-// }
+class Question {
+    constructor(number, image, audio, question, answers) {
+        this.number = number;
+        this.image = image;
+        this.audio = audio;
+        this.question = question;
+        this.answers = answers;
+    }
 
-// console.log(randomAnswer);
-// console.log(questions[i].answers[i].isCorrect);
+    getHTML() {
+        return `
+        <section class="quiz__container">
+            <header class="quiz__question">
+                <img src="">${this.image}</img>
+                <audio src="">${this.audio}</audio>
+                <h2 class="quiz__question-header">${this.number}. ${this.question}</h2>
+            </header>
+            <div class="quiz__answers">
+                <button class="quiz__answer-btns" data-correct="${this.answers[0].isCorrect}">${this.answers[0].answer}</button>  
+                <button class="quiz__answer-btns" data-correct="${this.answers[1].isCorrect}">${this.answers[1].answer}</button>  
+                <button class="quiz__answer-btns" data-correct="${this.answers[2].isCorrect}">${this.answers[2].answer}</button>  
+                <button class="quiz__answer-btns" data-correct="${this.answers[3].isCorrect}">${this.answers[3].answer}</button>  
+            </div>
+        </section>`;
+    }
+}
+
+const questionOneData = new Question("1", null, null, "What is the longest river in the world?",
+[
+    {answer: "Amazon", isCorrect: false}, 
+    {answer: "Mississippi", isCorrect: false}, 
+    {answer: "Danube", isCorrect: false},
+    {answer: "Nile", isCorrect: true} 
+]).getHTML();
+
+const questionTwoData = new Question("2", null, null, "What is the Capital City of Denmark?", 
+[
+    {answer: "Roskilde", isCorrect: false}, 
+    {answer: "Stockholm", isCorrect: false}, 
+    {answer: "Copenhagen", isCorrect: true},
+    {answer: "Oslo", isCorrect: false} 
+]).getHTML();
+
+const questionThreeData = new Question("3", null, null, "In which US State would you find Yosemite National Park?", 
+[
+    {answer: "Wyoming", isCorrect: false}, 
+    {answer: "Alaska", isCorrect: false}, 
+    {answer: "California", isCorrect: true},
+    {answer: "Montana", isCorrect: false} 
+]).getHTML();
+
+const questionFourData = new Question("4", null, null, "Rome was the first city in the world to reach a population of 1 million. Which became the second in 1810?", 
+[
+    {answer: "London", isCorrect: true}, 
+    {answer: "Paris", isCorrect: false}, 
+    {answer: "New York", isCorrect: true},
+    {answer: "Mumbai", isCorrect: false} 
+]).getHTML();
+
+console.log(questionOneData);
+console.log(questionTwoData);
+console.log(questionThreeData);
+
+
+const questionDataArray = [questionOneData, questionTwoData, questionThreeData, questionFourData];
+
+console.log(questionDataArray);
+
+const questionChange = setInterval(() => {
+    for (let i = 0; i < questionDataArray.length; i++) {
+        const questionContainer = document.querySelector('.quiz__container').innerHTML;
+        return;
+    }
+}, 1500)
+
+// console.log(questionChange);
+
+
 
 /* ====================================================================================
 *                                   Countdown Timer 
@@ -103,10 +176,6 @@ const disableBtns = () => {
 *                               Validate User Answers
 ==================================================================================== */ 
 
-// const validateAnswer = (questions) => {
-//     if (userAnswer.)
-// }
-
 const validateAnswer = (selectedAnswer) => {
     const isCorrect = selectedAnswer.dataset.correct;
 
@@ -138,18 +207,7 @@ const bindAnswerEventListeners = () => {
     }
 }
 
-// 0. Add event listeners for when the user answers the question
 bindAnswerEventListeners();
-
-// 1. Get the data from the data.js file
-
-// 2. Convert this data into an array of Question objects
-// const questionArr = questions.map(question => {
-//     return new Object(a, b, c)
-// })
-
-// 3. Render all of these questions into the innerHtml on the page
-const questionContainer = document.getElementById('the html element which i want to render into');
 
 /* ===============================================================================================================
 *
@@ -172,19 +230,19 @@ const questionContainer = document.getElementById('the html element which i want
 *   3. Answer interactions 
         - Regardless of whether user chooses the right/wrong answer, 
 *       - If the user clicks on the wrong answer:
-                -  It will toggle a class list of red to the answer, highlighting the user got the answer wrong.
+                -  It will toggle a class list of red to the answer, highlighting the user got the answer wrong. == DONE ==
                 -  Need to write code that will check the answer to the data object value isCorrect. Wrong if false. 
                 -  If false, don't update the left side of score counter, but update the right side. 
                 -  It will still show the correct answer by toggling background colour. 
 
         - If user answer correct:
-                - Toggle a class to change answer background colour to green
-                - Update clock at bottom with a message "e.g. Whizz Kid.... Congratulations etc!!"
-                - Update both left and right side of score counter
+                - Toggle a class to change answer background colour to green == DONE ==
+                - Update clock at bottom with a message "e.g. Whizz Kid.... Congratulations etc!!" == DONE ==
+                - Update both left and right side of score counter == DONE ==
 
         - In both cases: 
-                - When user has clicked an answer it will freeze the clock.
-                - Lock out any more click events, until next question loaded.
+                - When user has clicked an answer it will freeze the clock. == DONE ==
+                - Lock out any more click events, until next question loaded. == DONE ==
                 - Add page opacity to darken background. 
 
     4. Update HTML to display next question. 
