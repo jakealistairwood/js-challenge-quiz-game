@@ -25,17 +25,30 @@ body {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  height: 40vh;
   width: 70%;
   border-radius: 60px;
+}
+@media only screen and (max-width: 500px) {
+  .quiz .quiz__container {
+    width: 90%;
+    margin: 0 auto;
+  }
+}
+.quiz .quiz__container .quiz__question {
+  padding: 20px 0;
 }
 .quiz .quiz__container .quiz__answers {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  grid-template-rows: repeat(2, 1fr);
   grid-gap: 20px;
-  padding-top: 80px;
+  padding: 60px 0;
   width: 90%;
+  margin: 0 auto;
+}
+@media only screen and (max-width: 500px) {
+  .quiz .quiz__container .quiz__answers {
+    grid-template-columns: repeat(1, 1fr);
+  }
 }
 
 /* Countdown Clock */

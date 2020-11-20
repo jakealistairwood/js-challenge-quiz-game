@@ -10,6 +10,11 @@
   letter-spacing: 0.2em;
   font-weight: 700;
 }
+@media only screen and (max-width: 500px) {
+  .quiz .quiz__container .quiz__answers .quiz__answer-btns {
+    padding: 15px 15px;
+  }
+}
 .quiz .quiz__container .quiz__answers .quiz__answer-btns .correct {
   background-color: #60A561;
 }
